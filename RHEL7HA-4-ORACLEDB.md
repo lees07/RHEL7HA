@@ -7,11 +7,11 @@
 
 ## 准备步骤
 共 3 台机器:
-* 192.168.56.1  rhel7            NTP服务器、DNS服务器和测试客户端 
-* 192.168.56.71 rhel7ha1.sa.rh   HA服务器1, RHEL 7.x minimal 安装 
-* 192.168.56.72 rhel7ha2.sa.rh   HA服务器2, RHEL 7.x minimal 安装 
-共享磁盘 挂载到 2 个 HA 节点 
-网络连通, 192.168.56.70 用于 vip 
+* 192.168.56.1  rhel7            NTP服务器、DNS服务器和测试客户端 <br/>
+* 192.168.56.71 rhel7ha1.sa.rh   HA服务器1, RHEL 7.x minimal 安装 <br/>
+* 192.168.56.72 rhel7ha2.sa.rh   HA服务器2, RHEL 7.x minimal 安装 <br/>
+共享磁盘 挂载到 2 个 HA 节点 <br/>
+网络连通, 192.168.56.70 用于 vip <br/>
 
 
 1. 在 192.168.56.1 上配置 chronyd 服务做为时钟源
