@@ -185,7 +185,7 @@ PCSD Status:
 # pcs stonith create kdump fence_kdump pcmk_reboot_action="off" pcmk_host_list="rhel7ha1.sa.rh rhel7ha2.sa.rh"
 ```
 
-** 设置 stonith kdump 可以防止节点故障时, 集群软件直接停机, 从而不产生 kdump 文件的问题. **
+** 设置 stonith kdump 可以防止节点故障时, 集群软件直接停机, 从而不产生 kdump 文件的问题. <br/>
 或者通过以下命令禁用 stonith **
 ```shell
 # pcs property set stonith-enabled=false
