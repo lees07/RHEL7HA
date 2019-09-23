@@ -450,9 +450,9 @@ fence_xvm - Fence agent for virtual machines
 ```
 
 ## 参考
-[Common Users in a CDB](https://docs.oracle.com/database/121/ADMQS/GUID-DA54EBE5-43EF-4B09-B8CC-FAABA335FBB8.htm)
-[Use udev rules in RHEL 7](https://access.redhat.com/solutions/1135513)
-[Configure Kdump with RHEL 7 HA](https://access.redhat.com/articles/67570)
-[Configure fence_kdump in RHEL HA](https://access.redhat.com/solutions/2876971)
-[RHEL 7 HA Administrator Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/high_availability_add-on_administration/index#ch-service-HAAA)
+[Common Users in a CDB](https://docs.oracle.com/database/121/ADMQS/GUID-DA54EBE5-43EF-4B09-B8CC-FAABA335FBB8.htm)<br/>
+[Use udev rules in RHEL 7](https://access.redhat.com/solutions/1135513)<br/>
+[Configure Kdump with RHEL 7 HA](https://access.redhat.com/articles/67570)<br/>
+[Configure fence_kdump in RHEL HA](https://access.redhat.com/solutions/2876971)<br/>
+[RHEL 7 HA Administrator Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/high_availability_add-on_administration/index#ch-service-HAAA)<br/>
 [Deploying Oracle Database 12c on Red Hat Enterprise Linux 7](https://access.redhat.com/articles/1282303)
