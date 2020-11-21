@@ -268,7 +268,7 @@ E: USEC_INITIALIZED=76425
 ```
 
 10. 在 2 个 HA 节点上配置 lvm 启动  
-在 /etc/lvm/lvm.conf 文件中查找到 '# volume_list = [ "vg1", "vg2/lvol1", "@tag1", "@*" ]' 这行, 在此行的下一行添加 'volume_list = [ ROOT_VG ]'  
+在 /etc/lvm/lvm.conf 文件中查找到 '# volume_list = [ "vg1", "vg2/lvol1", "@tag1", "@*" ]' 这行, 在此行的下面添加一行 'volume_list = [ ROOT_VG ]'  
 ```shell
 # cat /etc/lvm/lvm.conf
 ...
