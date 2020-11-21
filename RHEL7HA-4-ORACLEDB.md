@@ -272,7 +272,7 @@ E: USEC_INITIALIZED=76425
 ```shell
 # cat /etc/lvm/lvm.conf
 ...
-  # Configuration option activation/volume_list.
+	# Configuration option activation/volume_list.
 	# Only LVs selected by this list are activated.
 	# If this list is defined, an LV is only activated if it matches an
 	# entry in this list. If this list is undefined, it imposes no limits
