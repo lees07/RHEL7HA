@@ -267,7 +267,20 @@ E: USEC_INITIALIZED=76425
 > EOF
 ```
 
-10. 在 2 个 HA 节点上配置 lvm 启动  
+10. 在 HA2 节点上, 增加共享卷和文件系统资源
+```shell
+# pvcreate /dev/sharedisk01
+# vgcreate shared_vg /dev/sharedisk01
+# lvcreate -l 100%FREE -n ha_lv shared_vg
+# lvs
+# mkfs.xfs /dev/shared_vg/ha_lv
+# lvmconf --enable-halvm --services --startstopservices
+# pcs resource create svg ocf:heartbeat:LVM volgrpname=shared_vg exclusive=true --group=oracle
+# pcs resource create sfs ocf:heartbeat:Filesystem device="/dev/shared_vg/ha_lv" directory="/u01" fstype="xfs" --group=oracle
+```
+
+
+11. 在 2 个 HA 节点上配置 lvm 启动  
 在 /etc/lvm/lvm.conf 文件中查找到 '# volume_list = [ "vg1", "vg2/lvol1", "@tag1", "@*" ]' 这行, 在此行的下面添加一行 'volume_list = [ ROOT_VG ]'  
 ```shell
 # cat /etc/lvm/lvm.conf
@@ -304,17 +317,6 @@ E: USEC_INITIALIZED=76425
 ```
 ** 注, ROOT_VG 指 /dev/sda 上的 ROOT 分区的 VG 名字, 在此阻止启动时 lvm 加载共享 VG , 而是在 pacemaker 服务中加载共享 VG **
 
-11. 在 HA2 节点上, 增加共享卷和文件系统资源
-```shell
-# pvcreate /dev/sharedisk01
-# vgcreate shared_vg /dev/sharedisk01
-# lvcreate -l 100%FREE -n ha_lv shared_vg
-# lvs
-# mkfs.xfs /dev/shared_vg/ha_lv
-# lvmconf --enable-halvm --services --startstopservices
-# pcs resource create svg ocf:heartbeat:LVM volgrpname=shared_vg exclusive=true --group=oracle
-# pcs resource create sfs ocf:heartbeat:Filesystem device="/dev/shared_vg/ha_lv" directory="/u01" fstype="xfs" --group=oracle
-```
 
 12. 确认资源在 HA2 节点上, 安装 Oracle 数据库到 /u01 目录并在文件系统上创建实例
 ```shell
