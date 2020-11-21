@@ -268,8 +268,37 @@ E: USEC_INITIALIZED=76425
 ```
 
 10. 在 2 个 HA 节点上配置 lvm 启动
+在 /etc/lvm/lvm.conf 文件中查找到 '# volume_list = [ "vg1", "vg2/lvol1", "@tag1", "@*" ]' 这行, 在此行的下一行添加 'volume_list = [ ROOT_VG ]'
 ```shell
-# echo 'volume_list = [ ROOT_VG ]' >> /etc/lvm/lvm.conf
+# cat /etc/lvm/lvm.conf
+...
+  # Configuration option activation/volume_list.
+	# Only LVs selected by this list are activated.
+	# If this list is defined, an LV is only activated if it matches an
+	# entry in this list. If this list is undefined, it imposes no limits
+	# on LV activation (all are allowed).
+	# 
+	# Accepted values:
+	#   vgname
+	#     The VG name is matched exactly and selects all LVs in the VG.
+	#   vgname/lvname
+	#     The VG name and LV name are matched exactly and selects the LV.
+	#   @tag
+	#     Selects an LV if the specified tag matches a tag set on the LV
+	#     or VG.
+	#   @*
+	#     Selects an LV if a tag defined on the host is also set on the LV
+	#     or VG. See tags/hosttags. If any host tags exist but volume_list
+	#     is not defined, a default single-entry list containing '@*'
+	#     is assumed.
+	# 
+	# Example
+	# volume_list = [ "vg1", "vg2/lvol1", "@tag1", "@*" ]
+	# 
+	# This configuration option does not have a default value defined.
+	volume_list = [ "rhel" ]
+...
+
 # dracut -H -f /boot/initramfs-$(uname -r).img $(uname -r)
 # reboot
 ```
