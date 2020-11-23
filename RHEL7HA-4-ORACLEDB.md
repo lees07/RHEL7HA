@@ -360,11 +360,17 @@ Daemon Status:
 ** 注, MON_PASSWORD 是 Oracle 12c container 数据库的用户 ocfmon 的密码 **
 
 
-14. 在 HA2 节点上，测试切换资源
+14. 在 HA2 节点上，测试切换资源  
 ```shell
 # pcs resource move oracle rhel7ha1.sa.rh
 # pcs status
 ```
+
+15. 配置 pcs cluster 开机自动启动  
+```shell
+# pcs cluster enable --all
+```
+
 
 
 ## 附录
